@@ -4,7 +4,7 @@ use Moose;
 
 use namespace::autoclean;
 
-use MooseX::Params::Validate qw( validated_list );
+use MooseX::Params::Validate qw( validated_hash validated_list );
 use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
@@ -18,9 +18,16 @@ has quiet => (
 
 sub execute_file {
     my $self = shift;
-    my $file = pos_validated_list( \@_, { isa => 'Str' } );
+    my %p    = validated_hash(
+        \@_,
+        name    => { isa => Str },
+        file    => { isa => Str },
+        options => { isa => ArrayRef [Str], default => [] },
+    );
 
-    $self->_run( options => [ '-f', $file ] );
+    push @{ $p{options} }, '-f', delete $p{file};
+
+    $self->run(%p);
 }
 
 sub run {

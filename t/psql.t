@@ -39,6 +39,36 @@ use Test::PgCLI;
             );
         },
     );
+
+    test_command(
+        'psql',
+        sub {
+            $psql->execute_file(
+                name => 'Foo',
+                file => 'thing.sql',
+            );
+        },
+        sub {
+            shift;
+            my @cmd = @_;
+
+            ok(
+                !$ENV{PGPASSWORD},
+                'password is not set in environment when command runs'
+            );
+            is_deeply(
+                \@cmd,
+                [
+                    'psql',
+                    '-w',
+                    '-q',
+                    '-f', 'thing.sql',
+                    'Foo'
+                ],
+                'command includes -f and file name'
+            );
+        },
+    );
 }
 
 {
