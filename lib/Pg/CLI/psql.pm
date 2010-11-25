@@ -23,7 +23,7 @@ sub execute_file {
         \@_,
         database => { isa => Str },
         file     => { isa => Str | File  },
-        options  => { isa => ArrayRef [Str], default => [] },
+        options  => { isa => ArrayRef [Str], optional => 1 },
     );
 
     push @{ $p{options} }, '-f', ( delete $p{file} ) . q{};
