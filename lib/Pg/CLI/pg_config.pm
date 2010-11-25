@@ -116,6 +116,8 @@ This class provides the following methods, each of which returns the relevant
 configuration info. If there was no value for the item, the method returns
 C<undef>.
 
+=over 4
+
 =item * $pg_config->bindir()
 
 =item * $pg_config->docdir()
@@ -159,6 +161,8 @@ C<undef>.
 =item * $pg_config->libs()
 
 =item * $pg_config->version()
+
+=back
 
 =head1 BUGS
 
