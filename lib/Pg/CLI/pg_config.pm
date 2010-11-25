@@ -12,7 +12,7 @@ with 'Pg::CLI::Role::Executable';
 
 has _config_info => (
     is       => 'ro',
-    isa      => HashRef [Str],
+    isa      => HashRef [ Maybe [Str] ],
     init_arg => undef,
     lazy     => 1,
     builder  => '_build_config_info',
@@ -58,9 +58,12 @@ sub _build_config_info {
 
     my %info;
     for my $line ( $self->_pg_config_output() ) {
+        chomp $line;
         my ( $key, $val ) = split / = /, $line, 2;
 
-        $info{ lc $key } = length $val ? $val : undef;
+        $key =~ s/-/_/;
+
+        $info{ lc $key } = $val =~ /\S/ ? $val : undef;
     }
 
     return \%info;
