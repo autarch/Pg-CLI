@@ -90,4 +90,3 @@ be passed on to pg_dump.
 See L<Pg::CLI> for bug reporting details.
 
 =cut
-
