@@ -9,7 +9,7 @@ use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
 use MooseX::Types::Path::Class qw( File );
 
-with 'Pg::CLI::Role::Connects';
+with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 
 has quiet => (
     is      => 'ro',
@@ -88,6 +88,11 @@ This class provides the following methods:
 The constructor accepts a number of parameters:
 
 =over 4
+
+=item * executable
+
+The path to F<psql>. By default, this will look for F<psql> in your path and
+throw an error if it cannot be found.
 
 =item * username
 
