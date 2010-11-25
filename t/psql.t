@@ -14,8 +14,8 @@ use Test::PgCLI;
         'psql',
         sub {
             $psql->run(
-                name    => 'Foo',
-                options => [ '-c', 'SELECT 1 FROM foo' ]
+                database => 'Foo',
+                options  => [ '-c', 'SELECT 1 FROM foo' ]
             );
         },
         sub {
@@ -44,8 +44,8 @@ use Test::PgCLI;
         'psql',
         sub {
             $psql->execute_file(
-                name => 'Foo',
-                file => 'thing.sql',
+                database => 'Foo',
+                file     => 'thing.sql',
             );
         },
         sub {
@@ -83,8 +83,8 @@ use Test::PgCLI;
         'psql',
         sub {
             $psql->run(
-                name    => 'Foo',
-                options => [ '-c', 'SELECT 1 FROM foo' ]
+                database => 'Foo',
+                options  => [ '-c', 'SELECT 1 FROM foo' ]
             );
         },
         sub {

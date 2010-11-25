@@ -14,8 +14,8 @@ use Test::PgCLI;
         'pg_dump',
         sub {
             $pg_dump->run(
-                name    => 'Foo',
-                options => [ '-c', 'SELECT 1 FROM foo' ]
+                database => 'Foo',
+                options  => [ '-c', 'SELECT 1 FROM foo' ]
             );
         },
         sub {
@@ -52,8 +52,8 @@ use Test::PgCLI;
         'pg_dump',
         sub {
             $pg_dump->run(
-                name    => 'Foo',
-                options => [ '-c', 'SELECT 1 FROM foo' ]
+                database => 'Foo',
+                options  => [ '-c', 'SELECT 1 FROM foo' ]
             );
         },
         sub {
