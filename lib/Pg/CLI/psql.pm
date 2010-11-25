@@ -127,4 +127,3 @@ pass additional options via the C<options> parameter.
 See L<Pg::CLI> for bug reporting details.
 
 =cut
-
