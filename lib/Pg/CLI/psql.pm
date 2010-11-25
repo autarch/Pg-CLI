@@ -26,7 +26,7 @@ sub execute_file {
         options  => { isa => ArrayRef [Str], default => [] },
     );
 
-    push @{ $p{options} }, '-f', delete $p{file} . q{};
+    push @{ $p{options} }, '-f', ( delete $p{file} ) . q{};
 
     $self->run(%p);
 }
