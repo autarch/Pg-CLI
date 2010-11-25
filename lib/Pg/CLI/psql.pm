@@ -7,6 +7,7 @@ use namespace::autoclean;
 use MooseX::Params::Validate qw( validated_hash validated_list );
 use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
+use MooseX::Types::Path::Class qw( File );
 
 with 'Pg::CLI::Role::Command';
 
@@ -21,7 +22,7 @@ sub execute_file {
     my %p    = validated_hash(
         \@_,
         database => { isa => Str },
-        file     => { isa => Str },
+        file     => { isa => Str | File  },
         options  => { isa => ArrayRef [Str], default => [] },
     );
 
