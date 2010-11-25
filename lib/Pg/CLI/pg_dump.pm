@@ -78,11 +78,6 @@ The host to use when connecting to the database. Optional.
 
 The port to use when connecting to the database. Optional.
 
-=item * quiet
-
-This defaults to true. When true, the "-q" flag is passed to pg_dump whenever it
-is executed.
-
 =back
 
 =head2 $pg_dump->run( database => ..., options => [ ... ] )
