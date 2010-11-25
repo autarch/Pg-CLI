@@ -10,13 +10,6 @@ use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
 with 'Pg::CLI::Role::Command';
 
-sub execute_file {
-    my $self = shift;
-    my $file = pos_validated_list( \@_, { isa => 'Str' } );
-
-    $self->_run( options => [ '-f', $file ] );
-}
-
 sub run {
     my $self = shift;
     my ( $name, $options ) = validated_list(
