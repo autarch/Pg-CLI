@@ -9,7 +9,7 @@ use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
 use MooseX::Types::Path::Class qw( File );
 
-with 'Pg::CLI::Role::Command';
+with 'Pg::CLI::Role::Connects';
 
 has quiet => (
     is      => 'ro',

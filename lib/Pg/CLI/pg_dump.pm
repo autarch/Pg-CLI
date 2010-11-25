@@ -8,7 +8,7 @@ use MooseX::Params::Validate qw( validated_list );
 use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
-with 'Pg::CLI::Role::Command';
+with 'Pg::CLI::Role::Connects';
 
 sub run {
     my $self = shift;

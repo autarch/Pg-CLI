@@ -1,4 +1,4 @@
-package Pg::CLI::Role::Command;
+package Pg::CLI::Role::Connects;
 
 use Moose::Role;
 
