@@ -7,6 +7,8 @@ use namespace::autoclean;
 use IPC::System::Simple qw( systemx );
 use MooseX::Types::Moose qw( Str );
 
+with 'Pg::CLI::Role::HasVersion';
+
 for my $attr (qw( username password host port )) {
     has $attr => (
         is        => 'rw',
@@ -46,7 +48,8 @@ sub _connect_options {
     push @options, '-p', $self->port()
         if $self->_has_port();
 
-    push @options, '-w';
+    push @options, '-w'
+        if $self->two_part_version >= 8.4;
 
     return @options;
 }

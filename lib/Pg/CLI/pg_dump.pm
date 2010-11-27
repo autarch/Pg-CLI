@@ -90,6 +90,14 @@ The port to use when connecting to the database. Optional.
 This method dumps the specified database. Any values passed in C<options> will
 be passed on to pg_dump.
 
+=head2 $pg_dump->version()
+
+Returns a the three part version as a string.
+
+=head2 $pg_dump->two_part_version()
+
+Returns the first two decimal numbers in the version.
+
 =head1 BUGS
 
 See L<Pg::CLI> for bug reporting details.
