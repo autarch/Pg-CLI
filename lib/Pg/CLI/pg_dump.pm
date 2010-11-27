@@ -19,7 +19,7 @@ sub run {
     );
 
     $self->_execute_command(
-        'pg_dump',
+        $self->executable(),
         $self->_connect_options(),
         @{$options},
         $database,

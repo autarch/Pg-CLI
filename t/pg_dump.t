@@ -8,7 +8,7 @@ use Test::More 0.88;
 use Test::PgCLI;
 
 {
-    my $pg_dump = Pg::CLI::pg_dump->new( executable => 'foo' );
+    my $pg_dump = Pg::CLI::pg_dump->new( executable => 'pg_dump' );
 
     test_command(
         'pg_dump',
@@ -42,7 +42,7 @@ use Test::PgCLI;
 
 {
     my $pg_dump = Pg::CLI::pg_dump->new(
-        executable => 'foo',
+        executable => 'pg_dump',
         username   => 'foo',
         password   => 'bar',
         host       => 'foo.example.com',
@@ -84,7 +84,7 @@ use Test::PgCLI;
 
 {
     my $pg_dump = Pg::CLI::pg_dump->new(
-        executable => 'foo',
+        executable => 'pg_dump',
         _version   => '8.3.2',
     );
 

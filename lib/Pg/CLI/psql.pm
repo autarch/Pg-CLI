@@ -40,7 +40,7 @@ sub run {
     );
 
     $self->_execute_command(
-        'psql',
+        $self->executable(),
         $self->_connect_options(),
         ( $self->quiet() ? '-q' : () ),
         @{$options},

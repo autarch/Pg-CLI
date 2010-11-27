@@ -71,7 +71,11 @@ sub _build_config_info {
 
 # Separate method so it can be overridden for tests
 sub _pg_config_output {
-    return `pg_config`;
+    my $self = shift;
+
+    my $command = $self->executable();
+
+    return `$command`;
 }
 
 __PACKAGE__->meta()->make_immutable();
