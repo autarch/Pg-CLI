@@ -23,7 +23,7 @@ sub _execute_command {
     local $ENV{PGPASSWORD} = $self->password()
         if $self->_has_password();
 
-    $self->_call_systemx($cmd,@opts);
+    $self->_call_systemx( $cmd, @opts );
 }
 
 # This is a separate sub to provide something we can override in testing
