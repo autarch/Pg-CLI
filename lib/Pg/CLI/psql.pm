@@ -110,6 +110,11 @@ The host to use when connecting to the database. Optional.
 
 The port to use when connecting to the database. Optional.
 
+=item * require_ssl
+
+If this is true, then the C<PGSSLMODE> environment variable will be set to
+"require" when connecting to the database.
+
 =item * quiet
 
 This defaults to true. When true, the "-q" flag is passed to psql whenever it
