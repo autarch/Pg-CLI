@@ -4,7 +4,7 @@ use Moose::Role;
 
 use namespace::autoclean;
 
-use IPC::System::Simple qw( systemx );
+use IPC::System::Simple qw( capturex );
 use MooseX::Types::Moose qw( Str );
 use Pg::CLI::pg_config;
 
@@ -27,7 +27,7 @@ has two_part_version => (
 sub _build_version {
     my $self = shift;
 
-    my $output = systemx( $self->executable(), '--version' );
+    my $output = capturex( $self->executable(), '--version' );
 
     return $1 if $output =~ /(\d\.\d\.\d)/;
 }
