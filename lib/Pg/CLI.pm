@@ -32,6 +32,8 @@ classes:
 
 =item * L<Pg::CLI::pg_dump>
 
+=item * L<Pg::CLI::pg_config>
+
 =back
 
 =head1 BUGS
