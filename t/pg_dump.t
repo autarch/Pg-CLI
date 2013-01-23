@@ -20,14 +20,14 @@ use Test::PgCLI;
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             ok(
                 !$ENV{PGPASSWORD},
                 'password is not set in environment when command runs'
             );
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'pg_dump',
                     '-w',
@@ -59,14 +59,14 @@ use Test::PgCLI;
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             is(
                 $ENV{PGPASSWORD}, 'bar',
                 'password is set in environment when command runs'
             );
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'pg_dump',
                     '-U', 'foo',
@@ -98,10 +98,10 @@ use Test::PgCLI;
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'pg_dump',
                     '-c', 'SELECT 1 FROM foo',

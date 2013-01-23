@@ -15,12 +15,12 @@ use Test::PgCLI;
         sub {
             $psql->run(
                 database => 'Foo',
-                options  => [ '-c', 'SELECT 1 FROM foo' ]
+                options  => [ '-c', 'SELECT 1 FROM foo' ],
             );
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             ok(
                 !$ENV{PGPASSWORD},
@@ -31,7 +31,7 @@ use Test::PgCLI;
                 'ssl mode is not set in environment when command runs'
             );
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'psql',
                     '-w',
@@ -54,14 +54,14 @@ use Test::PgCLI;
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             ok(
                 !$ENV{PGPASSWORD},
                 'password is not set in environment when command runs'
             );
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'psql',
                     '-w',
@@ -71,6 +71,43 @@ use Test::PgCLI;
                 ],
                 'command includes -f and file name'
             );
+        },
+    );
+
+    test_command(
+        'psql',
+        sub {
+            $psql->run(
+                database => 'Foo',
+                stdin    => \'in',
+                stdout   => \'out',
+                stderr   => \'err',
+            );
+        },
+        sub {
+            shift;
+            my $cmd    = shift;
+            my $stdin  = shift;
+            my $stdout = shift;
+            my $stderr = shift;
+
+            is_deeply(
+                $cmd,
+                [
+                    'psql',
+                    '-w',
+                    '-q',
+                    'Foo',
+                ],
+                'command includes -w but no other connection info'
+            );
+
+            is_deeply(
+                $stdin,
+                \'in',
+                'got expected stdin ref'
+            );
+
         },
     );
 }
@@ -95,7 +132,7 @@ use Test::PgCLI;
         },
         sub {
             shift;
-            my @cmd = @_;
+            my $cmd = shift;
 
             is(
                 $ENV{PGPASSWORD}, 'bar',
@@ -106,7 +143,7 @@ use Test::PgCLI;
                 'ssl mode is set in environment when command runs'
             );
             is_deeply(
-                \@cmd,
+                $cmd,
                 [
                     'psql',
                     '-U', 'foo',

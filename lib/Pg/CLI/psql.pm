@@ -6,7 +6,7 @@ use namespace::autoclean;
 
 use MooseX::Params::Validate qw( validated_hash validated_list );
 use MooseX::SemiAffordanceAccessor;
-use MooseX::Types::Moose qw( ArrayRef Bool Str );
+use MooseX::Types::Moose qw( ArrayRef Bool Defined Str );
 use MooseX::Types::Path::Class qw( File );
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
@@ -22,8 +22,11 @@ sub execute_file {
     my %p    = validated_hash(
         \@_,
         database => { isa => Str },
-        file     => { isa => Str | File  },
+        file     => { isa => Str | File },
         options  => { isa => ArrayRef [Str], optional => 1 },
+        stdin  => { isa => Defined, optional => 1 },
+        stdout => { isa => Defined, optional => 1 },
+        stderr => { isa => Defined, optional => 1 },
     );
 
     push @{ $p{options} }, '-f', ( delete $p{file} ) . q{};
@@ -31,21 +34,10 @@ sub execute_file {
     $self->run(%p);
 }
 
-sub run {
+sub _run_options {
     my $self = shift;
-    my ( $database, $options ) = validated_list(
-        \@_,
-        database => { isa => Str },
-        options  => { isa => ArrayRef [Str] },
-    );
 
-    $self->_execute_command(
-        $self->executable(),
-        $self->_connect_options(),
-        ( $self->quiet() ? '-q' : () ),
-        @{$options},
-        $database,
-    );
+    return ( $self->quiet() ? '-q' : () );
 }
 
 __PACKAGE__->meta()->make_immutable();
@@ -73,6 +65,13 @@ __END__
   $psql->execute_file(
       database => 'database',
       file     => 'thing.sql',
+  );
+
+  my $errors;
+  $psql->run(
+      database => 'foo',
+      stdin    => \$sql,
+      stderr   => \$errors,
   );
 
 =head1 DESCRIPTION
@@ -127,10 +126,20 @@ is executed.
 This method runs a command against the specified database. You must pass one
 or more options that indicate what psql should do.
 
+This method also accepts optional C<stdin>, C<stdout>, and C<stderr>
+parameters. These parameters can be any defined value that could be passed as
+the relevant parameter to L<IPC::Run3>'s C<run3> subroutine.
+
+Most notably, you can pass scalar references to pipe data in via the C<stdin>
+parameter or capture output sent to C<stdout> or C<stderr>
+
 =head2 $psql->execute_file( database => ..., file => ... )
 
 This method executes the specified file against the database. You can also
 pass additional options via the C<options> parameter.
+
+This method also accepts optional C<stdin>, C<stdout>, and C<stderr>
+parameters, just like the C<< $psql->run() >> method.
 
 =head2 $psql->version()
 
