@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.09    2013-02-05
+
 - Added a Pg::CLI::pg_restore class.
 
 
