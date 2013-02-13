@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.10    2013-02-13
+
 - Make the pg_restore class actually work. Unlike other Pg CLI commands, with
   pg_restore the database is passed as "-d Foo", not as the final argument.
 
