@@ -10,6 +10,17 @@ use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 
+sub _database_at_end {
+    return 0;
+}
+
+sub _run_options {
+    my $self     = shift;
+    my $database = shift;
+
+    return ( '-d', $database );
+}
+
 __PACKAGE__->meta()->make_immutable();
 
 1;

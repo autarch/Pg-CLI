@@ -42,12 +42,16 @@ sub run {
         [
             $self->executable(),
             $self->_connect_options(),
-            $self->_run_options(),
+            $self->_run_options($database),
             @{$options},
-            $database,
+            ( $self->_database_at_end() ? $database : () ),
         ],
         $stdin, $stdout, $stderr,
     );
+}
+
+sub _database_at_end {
+    return 1;
 }
 
 sub _run_options {
