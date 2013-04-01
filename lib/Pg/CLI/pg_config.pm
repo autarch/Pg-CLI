@@ -19,26 +19,26 @@ has _config_info => (
 
 my @attrs = qw(
     bindir
+    cc
+    cflags
+    cflags_sl
+    configure
+    cppflags
     docdir
     htmldir
     includedir
-    pkgincludedir
     includedir_server
-    libdir
-    pkglibdir
-    localedir
-    mandir
-    sharedir
-    sysconfdir
-    pgxs
-    configure
-    cc
-    cppflags
-    cflags
-    cflags_sl
     ldflags
     ldflags_sl
+    libdir
     libs
+    localedir
+    mandir
+    pgxs
+    pkgincludedir
+    pkglibdir
+    sharedir
+    sysconfdir
     version
 );
 
@@ -123,45 +123,45 @@ C<undef>.
 
 =item * $pg_config->bindir()
 
+=item * $pg_config->cc()
+
+=item * $pg_config->cflags()
+
+=item * $pg_config->cflags_sl()
+
+=item * $pg_config->configure()
+
+=item * $pg_config->cppflags()
+
 =item * $pg_config->docdir()
 
 =item * $pg_config->htmldir()
 
 =item * $pg_config->includedir()
 
-=item * $pg_config->pkgincludedir()
-
 =item * $pg_config->includedir_server()
-
-=item * $pg_config->libdir()
-
-=item * $pg_config->pkglibdir()
-
-=item * $pg_config->localedir()
-
-=item * $pg_config->mandir()
-
-=item * $pg_config->sharedir()
-
-=item * $pg_config->sysconfdir()
-
-=item * $pg_config->pgxs()
-
-=item * $pg_config->configure()
-
-=item * $pg_config->cc()
-
-=item * $pg_config->cppflags()
-
-=item * $pg_config->cflags()
-
-=item * $pg_config->cflags_sl()
 
 =item * $pg_config->ldflags()
 
 =item * $pg_config->ldflags_sl()
 
+=item * $pg_config->libdir()
+
 =item * $pg_config->libs()
+
+=item * $pg_config->localedir()
+
+=item * $pg_config->mandir()
+
+=item * $pg_config->pgxs()
+
+=item * $pg_config->pkgincludedir()
+
+=item * $pg_config->pkglibdir()
+
+=item * $pg_config->sharedir()
+
+=item * $pg_config->sysconfdir()
 
 =item * $pg_config->version()
 
