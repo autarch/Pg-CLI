@@ -4,7 +4,7 @@ use Moose;
 
 use namespace::autoclean;
 
-use MooseX::Params::Validate qw( validated_hash validated_list );
+use MooseX::Params::Validate qw( validated_hash );
 use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Defined Str );
 use MooseX::Types::Path::Class qw( File );

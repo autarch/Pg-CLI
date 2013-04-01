@@ -4,9 +4,7 @@ use Moose;
 
 use namespace::autoclean;
 
-use MooseX::Params::Validate qw( validated_list );
 use MooseX::SemiAffordanceAccessor;
-use MooseX::Types::Moose qw( ArrayRef Bool Str );
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 
