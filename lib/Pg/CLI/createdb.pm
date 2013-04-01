@@ -99,6 +99,8 @@ The name of the database to create. Required.
 
 A list of additional options to pass to the command. Optional.
 
+=back
+
 =head1 BUGS
 
 See L<Pg::CLI> for bug reporting details.
