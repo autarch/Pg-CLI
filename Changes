@@ -1,6 +1,6 @@
 {{$NEXT}}
 
-- Added a Pg::CLI::createdb class.
+- Added Pg::CLI::createdb and Pg::CLI::dropdb classes.
 
 
 0.10    2013-02-13
