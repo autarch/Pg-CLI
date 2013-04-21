@@ -107,3 +107,5 @@ sub _connect_options {
 }
 
 1;
+
+=for Pod::Coverage run
