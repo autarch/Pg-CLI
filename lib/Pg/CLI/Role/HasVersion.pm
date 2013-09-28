@@ -44,7 +44,7 @@ sub _build_version {
 sub _build_two_part_version {
     my $self = shift;
 
-    return $1 if $self->version() =~ /(\d\.\d)/;
+    return $1 if $self->version() =~ /^(\d\.\d)/;
 }
 
 1;
