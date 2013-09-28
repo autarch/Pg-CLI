@@ -1,5 +1,9 @@
 {{$NEXT}}
 
+- Made the database argument optional for Pg::CLI::psql->execute_file() as
+  well.
+
+
 0.11    2013-04-01
 
 - Added Pg::CLI::createdb and Pg::CLI::dropdb classes.
