@@ -21,9 +21,9 @@ sub execute_file {
     my $self = shift;
     my %p    = validated_hash(
         \@_,
-        database => { isa => Str },
+        database => { isa => Str, optional => 1 },
         file     => { isa => Str | File },
-        options  => { isa => ArrayRef [Str], optional => 1 },
+        options => { isa => ArrayRef [Str], optional => 1 },
         stdin  => { isa => Defined, optional => 1 },
         stdout => { isa => Defined, optional => 1 },
         stderr => { isa => Defined, optional => 1 },

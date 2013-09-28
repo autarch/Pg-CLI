@@ -160,4 +160,36 @@ use Test::PgCLI;
     );
 }
 
+{
+    my $psql = Pg::CLI::psql->new( executable => 'psql' );
+
+    test_command(
+        'psql',
+        sub {
+            $psql->run(
+                options => ['-l'],
+            );
+        },
+        sub {
+            shift;
+            my $cmd = shift;
+
+            ok(
+                !$ENV{PGPASSWORD},
+                'password is not set in environment when command runs'
+            );
+            is_deeply(
+                $cmd,
+                [
+                    'psql',
+                    '-w',
+                    '-q',
+                    '-l',
+                ],
+                'command includes -l'
+            );
+        },
+    );
+}
+
 done_testing();
