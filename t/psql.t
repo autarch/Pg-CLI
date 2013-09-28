@@ -192,4 +192,36 @@ use Test::PgCLI;
     );
 }
 
+{
+    my $psql = Pg::CLI::psql->new( executable => 'psql' );
+
+    test_command(
+        'psql',
+        sub {
+            $psql->run(
+                options => ['-l'],
+            );
+        },
+        sub {
+            shift;
+            my $cmd = shift;
+
+            ok(
+                !$ENV{PGPASSWORD},
+                'password is not set in environment when command runs'
+            );
+            is_deeply(
+                $cmd,
+                [
+                    'psql',
+                    '-q',
+                    '-l',
+                ],
+                'command does not include -w with older psql'
+            );
+        },
+        '8.0.1',
+    );
+}
+
 done_testing();
