@@ -12,7 +12,7 @@ sub test_command {
     my $class   = shift;
     my $run     = shift;
     my $tests   = shift;
-    my $version = shift // '8.4.5';
+    my $version = shift || '8.4.5';
 
     $class = 'Pg::CLI::' . $class;
 
