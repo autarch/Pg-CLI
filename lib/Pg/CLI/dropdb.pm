@@ -1,11 +1,11 @@
 package Pg::CLI::dropdb;
 
-use Moose;
-
+use strict;
+use warnings;
 use namespace::autoclean;
 
+use Moose;
 use MooseX::SemiAffordanceAccessor;
-use MooseX::Types::Moose qw( Str );
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 

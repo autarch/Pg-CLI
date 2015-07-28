@@ -1,13 +1,15 @@
 package Pg::CLI::Role::Connects;
 
-use Moose::Role;
-
+use strict;
+use warnings;
 use namespace::autoclean;
 
 use IPC::Run3 qw( run3 );
 use MooseX::Params::Validate qw( validated_hash validated_list );
-use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Defined Str );
+
+use Moose::Role;
+use MooseX::SemiAffordanceAccessor;
 
 with 'Pg::CLI::Role::HasVersion';
 

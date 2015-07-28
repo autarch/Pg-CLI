@@ -1,5 +1,8 @@
 package Pg::CLI;
 
+use strict;
+use warnings;
+
 1;
 
 # ABSTRACT: Run Postgres CLI utilities

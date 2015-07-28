@@ -1,13 +1,15 @@
 package Pg::CLI::psql;
 
-use Moose;
-
+use strict;
+use warnings;
 use namespace::autoclean;
 
 use MooseX::Params::Validate qw( validated_hash );
-use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( ArrayRef Bool Defined Str );
 use MooseX::Types::Path::Class qw( File );
+
+use Moose;
+use MooseX::SemiAffordanceAccessor;
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 

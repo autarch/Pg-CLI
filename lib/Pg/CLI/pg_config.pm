@@ -1,11 +1,13 @@
 package Pg::CLI::pg_config;
 
-use Moose;
-
+use strict;
+use warnings;
 use namespace::autoclean;
 
-use MooseX::SemiAffordanceAccessor;
 use MooseX::Types::Moose qw( HashRef Maybe Str );
+
+use Moose;
+use MooseX::SemiAffordanceAccessor;
 
 with 'Pg::CLI::Role::Executable';
 

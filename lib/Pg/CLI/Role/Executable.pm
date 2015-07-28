@@ -1,11 +1,13 @@
 package Pg::CLI::Role::Executable;
 
-use Moose::Role;
-
+use strict;
+use warnings;
 use namespace::autoclean;
 
 use File::Which qw( which );
 use MooseX::Types::Moose qw( Str );
+
+use Moose::Role;
 
 has executable => (
     is      => 'ro',

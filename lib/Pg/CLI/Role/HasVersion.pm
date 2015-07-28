@@ -1,12 +1,13 @@
 package Pg::CLI::Role::HasVersion;
 
-use Moose::Role;
-
+use strict;
+use warnings;
 use namespace::autoclean;
 
 use IPC::Run3 qw( run3 );
 use MooseX::Types::Moose qw( Str );
-use Pg::CLI::pg_config;
+
+use Moose::Role;
 
 has version => (
     is       => 'ro',

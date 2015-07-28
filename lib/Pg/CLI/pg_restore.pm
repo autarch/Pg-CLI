@@ -1,9 +1,10 @@
 package Pg::CLI::pg_restore;
 
-use Moose;
-
+use strict;
+use warnings;
 use namespace::autoclean;
 
+use Moose;
 use MooseX::SemiAffordanceAccessor;
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
