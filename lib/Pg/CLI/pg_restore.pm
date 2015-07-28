@@ -11,6 +11,7 @@ use MooseX::SemiAffordanceAccessor;
 
 with qw( Pg::CLI::Role::Connects Pg::CLI::Role::Executable );
 
+## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
 sub _database_at_end {
     return 0;
 }
@@ -21,6 +22,7 @@ sub _run_options {
 
     return ( '-d', $database );
 }
+## use critic
 
 __PACKAGE__->meta()->make_immutable();
 

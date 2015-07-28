@@ -49,7 +49,7 @@ my @attrs = qw(
 for my $attr (@attrs) {
     has $attr => (
         is       => 'ro',
-        isa      => Maybe[Str],
+        isa      => Maybe [Str],
         init_arg => undef,
         lazy     => 1,
         default  => sub { $_[0]->_config_info()->{$attr} },
@@ -78,6 +78,7 @@ sub _pg_config_output {
 
     my $command = $self->executable();
 
+    ## no critic (InputOutput::ProhibitBacktickOperators)
     return `$command`;
 }
 

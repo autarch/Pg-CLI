@@ -5,6 +5,7 @@ use warnings;
 
 use Exporter 'import';
 
+## no critic (Modules::ProhibitAutomaticExportation)
 our @EXPORT = 'test_command';
 
 sub test_command {
@@ -15,11 +16,12 @@ sub test_command {
 
     $class = 'Pg::CLI::' . $class;
 
+    ## no critic (TestingAndDebugging::ProhibitNoStrict)
     no warnings 'redefine';
     no strict 'refs';
 
     local *{ $class . '::_call_run3' } = $tests;
-    local *{ $class . '::_build_version' } = sub { $version };
+    local *{ $class . '::_build_version' } = sub {$version};
 
     $run->();
 }

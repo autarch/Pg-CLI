@@ -38,11 +38,13 @@ sub execute_file {
     $self->run(%p);
 }
 
+## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
 sub _run_options {
     my $self = shift;
 
     return ( $self->quiet() ? '-q' : () );
 }
+## use critic
 
 __PACKAGE__->meta()->make_immutable();
 
