@@ -3,6 +3,8 @@ package Pg::CLI;
 use strict;
 use warnings;
 
+our $VERSION = '0.12';
+
 1;
 
 # ABSTRACT: Run Postgres CLI utilities

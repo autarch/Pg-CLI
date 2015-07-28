@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use namespace::autoclean;
 
+our $VERSION = '0.12';
+
 use IPC::Run3 qw( run3 );
 use MooseX::Types::Moose qw( Str );
 

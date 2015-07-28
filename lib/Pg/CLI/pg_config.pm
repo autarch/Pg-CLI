@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use namespace::autoclean;
 
+our $VERSION = '0.12';
+
 use MooseX::Types::Moose qw( HashRef Maybe Str );
 
 use Moose;

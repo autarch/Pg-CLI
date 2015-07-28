@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use namespace::autoclean;
 
+our $VERSION = '0.12';
+
 use MooseX::Params::Validate qw( validated_hash );
 use MooseX::Types::Moose qw( ArrayRef Bool Defined Str );
 use MooseX::Types::Path::Class qw( File );

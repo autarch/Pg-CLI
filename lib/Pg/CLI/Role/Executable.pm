@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use namespace::autoclean;
 
+our $VERSION = '0.12';
+
 use File::Which qw( which );
 use MooseX::Types::Moose qw( Str );
 
