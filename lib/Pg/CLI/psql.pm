@@ -71,6 +71,7 @@ __END__
       file     => 'thing.sql',
   );
 
+  my $sql = '...';
   my $errors;
   $psql->run(
       database => 'foo',
