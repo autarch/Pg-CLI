@@ -50,7 +50,9 @@ sub run {
             @{$options},
             ( $database && $self->_database_at_end() ? $database : () ),
         ],
-        $stdin, $stdout, $stderr,
+        $stdin,
+        $stdout,
+        $stderr,
     );
 }
 
