@@ -7,6 +7,7 @@ use namespace::autoclean;
 our $VERSION = '0.12';
 
 use MooseX::Params::Validate qw( validated_hash );
+use MooseX::Types qw( as coerce from subtype via where );
 use MooseX::Types::Moose qw( ArrayRef Bool Defined Str );
 use MooseX::Types::Path::Class qw( File );
 
@@ -21,21 +22,30 @@ has quiet => (
     default => 1,
 );
 
-sub execute_file {
-    my $self = shift;
-    my %p    = validated_hash(
-        \@_,
-        database => { isa => Str, optional => 1 },
-        file     => { isa => Str | File },
-        options => { isa => ArrayRef [Str], optional => 1 },
-        stdin  => { isa => Defined, optional => 1 },
-        stdout => { isa => Defined, optional => 1 },
-        stderr => { isa => Defined, optional => 1 },
+{
+
+    my $array_of_files = subtype(
+        as ArrayRef [ Str | File ],
+        where { @$_ > 0 },
     );
+    coerce $array_of_files, from Str | File, via { [$_] };
 
-    push @{ $p{options} }, '-f', ( delete $p{file} ) . q{};
+    sub execute_file {
+        my $self = shift;
+        my %p    = validated_hash(
+            \@_,
+            database => { isa => Str,             optional => 1 },
+            file     => { isa => $array_of_files, coerce   => 1 },
+            options => { isa => ArrayRef [Str], optional => 1 },
+            stdin   => { isa => Defined,        optional => 1 },
+            stdout  => { isa => Defined,        optional => 1 },
+            stderr  => { isa => Defined,        optional => 1 },
+        );
 
-    $self->run(%p);
+        push @{ $p{options} }, map { ( '-f', "$_" ) } @{ delete $p{file} };
+
+        $self->run(%p);
+    }
 }
 
 ## no critic (Subroutines::ProhibitUnusedPrivateSubroutines)
@@ -142,8 +152,10 @@ parameter or capture output sent to C<stdout> or C<stderr>
 
 =head2 $psql->execute_file( database => ..., file => ... )
 
-This method executes the specified file against the database. You can also
-pass additional options via the C<options> parameter.
+This method executes the specified file or files against the database. C<file>
+should either be the path to a single file as a string or C<Path::Class::File>
+or an arrayref of such paths. You can also pass additional options via the
+C<options> parameter.
 
 This method also accepts optional C<stdin>, C<stdout>, and C<stderr>
 parameters, just like the C<< $psql->run() >> method.
