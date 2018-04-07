@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use namespace::autoclean;
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 use MooseX::Params::Validate qw( validated_hash );
 use MooseX::Types qw( as coerce from subtype via where );
