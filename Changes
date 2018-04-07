@@ -2,6 +2,8 @@
 
 - Made the database argument optional for Pg::CLI::psql->execute_file() as
   well.
+- Pg::CLI::psql->execute_file will now accept an arrayref of file paths
+  as the value for the "file" argument.
 
 - Pg::CLI::psql->execute_file will now accept an arrayref of file paths
   as the value for the "file" argument.
