@@ -172,8 +172,4 @@ C<undef>.
 
 =back
 
-=head1 BUGS
-
-See L<Pg::CLI> for bug reporting details.
-
 =cut

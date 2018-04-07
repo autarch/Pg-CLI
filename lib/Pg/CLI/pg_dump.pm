@@ -102,8 +102,4 @@ Returns a the three part version as a string.
 
 Returns the first two decimal numbers in the version.
 
-=head1 BUGS
-
-See L<Pg::CLI> for bug reporting details.
-
 =cut
