@@ -55,10 +55,13 @@ through the web interface at [http://rt.cpan.org](http://rt.cpan.org).  I will b
 then you'll automatically be notified of progress on your bug as I make
 changes.
 
-Bugs may be submitted through [the RT bug tracker](http://rt.cpan.org/Public/Dist/Display.html?Name=Pg-CLI)
-(or [bug-pg-cli@rt.cpan.org](mailto:bug-pg-cli@rt.cpan.org)).
+Bugs may be submitted at [http://rt.cpan.org/Public/Dist/Display.html?Name=Pg-CLI](http://rt.cpan.org/Public/Dist/Display.html?Name=Pg-CLI) or via email to [bug-pg-cli@rt.cpan.org](mailto:bug-pg-cli@rt.cpan.org).
 
-I am also usually active on IRC as 'drolsky' on `irc://irc.perl.org`.
+I am also usually active on IRC as 'autarch' on `irc://irc.perl.org`.
+
+# SOURCE
+
+The source code repository for Pg-CLI can be found at [https://github.com/houseabsolute/Pg-CLI](https://github.com/houseabsolute/Pg-CLI).
 
 # DONATIONS
 
@@ -81,10 +84,17 @@ button at [http://www.urth.org/~autarch/fs-donation.html](http://www.urth.org/~a
 
 Dave Rolsky <autarch@urth.org>
 
-# COPYRIGHT AND LICENCE
+# CONTRIBUTOR
 
-This software is Copyright (c) 2016 by Dave Rolsky.
+Gregory Oschwald <goschwald@maxmind.com>
+
+# COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2018 by Dave Rolsky.
 
 This is free software, licensed under:
 
     The Artistic License 2.0 (GPL Compatible)
+
+The full text of the license can be found in the
+`LICENSE` file included with this distribution.
