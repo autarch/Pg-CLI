@@ -44,14 +44,15 @@ sub _build_version {
     ## no critic (RegularExpressions::ProhibitCaptureWithoutTest)
     #
     # https://github.com/Perl-Critic/Perl-Critic/issues/533
-    return $1 if $output =~ /(\d\.\d\.\d)/;
+    return $1
+        if $output =~ /\Qpsql (PostgreSQL) \E([0-9]+\.[0-9]+(?:\.[0-9]+)?)/;
 }
 
 sub _build_two_part_version {
     my $self = shift;
 
     ## no critic (RegularExpressions::ProhibitCaptureWithoutTest)
-    return $1 if $self->version() =~ /^(\d\.\d)/;
+    return $1 if $self->version() =~ /^([0-9]+.[0-9]+)/;
 }
 
 1;
