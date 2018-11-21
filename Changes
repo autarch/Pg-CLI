@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+0.14    2018-11-21
+
 - Fix version detection for new Pg versions that only report a two-part
   version like 10.6 or 11.1. Not detecting the version could cause the "-w"
   flag to not be passed when it should, leading to psql prompting for a
